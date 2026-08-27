@@ -33,7 +33,7 @@ function CalcButton({ className = "" }: { className?: string }) {
   return (
     <a
       href="#zayavka"
-      className={`inline-flex items-center justify-center bg-tape px-5 py-3 font-mono text-[13px] uppercase tracking-[0.06em] text-graphite transition-opacity hover:opacity-85 ${className}`}
+      className={`items-center justify-center bg-tape px-5 py-3 text-center font-mono text-[13px] uppercase tracking-[0.06em] text-graphite transition-opacity hover:opacity-85 ${className}`}
     >
       Рассчитать стоимость
     </a>
@@ -43,26 +43,30 @@ function CalcButton({ className = "" }: { className?: string }) {
 function Header() {
   return (
     <header className="border-b border-edge bg-graphite text-paper">
-      <div className="mx-auto grid max-w-[1280px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 sm:px-8">
-        <div className="min-w-0">
-          <span className="block truncate font-display text-lg tracking-[-0.02em] sm:text-xl">
+      <div className="mx-auto flex max-w-[1280px] flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-8">
+        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 sm:flex sm:items-center">
+          <span className="min-w-0 truncate font-display text-lg tracking-[-0.02em] sm:text-xl">
             [Название компании]
           </span>
-          <span className="mt-0.5 block font-mono text-[11px] text-edge">
-            мебельный цех · Рязань
-          </span>
-        </div>
-        <div className="flex shrink-0 items-center gap-3 sm:gap-6">
           <a
             href={PHONE_HREF}
-            className="font-mono text-[13px] whitespace-nowrap text-paper underline-offset-4 hover:underline sm:text-sm"
+            className="shrink-0 font-mono text-[13px] whitespace-nowrap text-paper underline-offset-4 hover:underline sm:hidden"
           >
             {PHONE_LABEL}
           </a>
-          <CalcButton className="hidden sm:inline-flex" />
+        </div>
+        <div className="flex items-center gap-6">
+          <a
+            href={PHONE_HREF}
+            className="hidden shrink-0 font-mono text-sm whitespace-nowrap text-paper underline-offset-4 hover:underline sm:inline"
+          >
+            {PHONE_LABEL}
+          </a>
+          <CalcButton className="flex w-full sm:inline-flex sm:w-auto" />
         </div>
       </div>
     </header>
+
   );
 }
 
