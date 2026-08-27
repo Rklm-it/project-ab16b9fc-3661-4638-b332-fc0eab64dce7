@@ -550,7 +550,7 @@ function LeadForm() {
             </div>
             <p className="mt-4 text-sm leading-relaxed sm:text-base">
               Или напишите в{" "}
-              <a href="https://t.me/+79610103034" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-blueprint">
+              <a href="https://t.me/Mebel_Ryazan" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-blueprint">
                 Telegram
               </a>
               ,{" "}
@@ -579,7 +579,7 @@ function Footer() {
   ];
 
   const messengers = [
-    { label: "Telegram", href: "https://t.me/+79610103034" },
+    { label: "Telegram", href: "https://t.me/Mebel_Ryazan" },
     { label: "WhatsApp", href: "https://wa.me/79610103034" },
     { label: "Viber", href: "viber://chat?number=%2B79610103034" },
   ];
