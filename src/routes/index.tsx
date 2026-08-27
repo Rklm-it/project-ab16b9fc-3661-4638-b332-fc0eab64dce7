@@ -365,6 +365,211 @@ function Works() {
   );
 }
 
+const ORDER_STEPS = [
+  {
+    title: "Замер",
+    text: "выезжает специалист, замер и консультация бесплатно",
+  },
+  {
+    title: "Дизайн-проект",
+    text: "согласуем проект, подбираем материалы под ваш бюджет",
+  },
+  {
+    title: "Договор и оплата",
+    text: "аванс 60%, остальные 40% при получении. Наличный и безналичный расчёт, есть рассрочка",
+  },
+  {
+    title: "Изготовление и установка",
+    text: "от 2 до 5 недель в зависимости от сложности. Сборка занимает один день, работаем без выходных",
+  },
+];
+
+function OrderSteps() {
+  return (
+    <>
+      <SectionRule label="этапы" />
+      <section id="cena" className="mx-auto w-full max-w-[1280px] px-5 py-14 sm:px-8 sm:py-20">
+        <h2 className="text-[22px] leading-tight sm:text-[32px]">Как идёт заказ</h2>
+        <div className="mt-8 max-w-[64ch]">
+          {ORDER_STEPS.map((step) => (
+            <div key={step.title} className="text-blueprint">
+              <DimLine />
+              <h3 className="mt-4 text-graphite text-lg leading-tight sm:text-xl">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed sm:text-base">{step.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
+const CONDITIONS = [
+  { label: "Минимальный заказ", value: "от 10 000 ₽" },
+  { label: "Аванс", value: "60%, остальное при получении" },
+  { label: "Срок изготовления", value: "от 2 до 5 недель" },
+  { label: "Доставка по Рязани", value: "499 ₽, бесплатно при заказе от 40 000 ₽" },
+  { label: "Подъём и сборка", value: "бесплатно при заказе от 40 000 ₽" },
+  { label: "Гарантия", value: "[указать: ... лет]" },
+];
+
+function Conditions() {
+  return (
+    <>
+      <SectionRule label="спецификация" />
+      <section id="materialy" className="mx-auto w-full max-w-[1280px] px-5 py-14 sm:px-8 sm:py-20">
+        <h2 className="text-[22px] leading-tight sm:text-[32px]">Условия</h2>
+        <table className="mt-8 w-full border-collapse">
+          <tbody>
+            {CONDITIONS.map((row) => (
+              <tr key={row.label} className="border-b border-edge">
+                <td className="w-1/3 py-3 pr-4 align-baseline font-mono text-[12px] text-blueprint sm:py-4 sm:pr-8 sm:text-[13px]">
+                  {row.label}
+                </td>
+                <td className="py-3 align-baseline text-sm sm:py-4 sm:text-base">
+                  {row.value}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="mt-8 font-mono text-[12px] leading-relaxed text-blueprint sm:text-[13px]">
+          Из чего делаем: ЛДСП Lamarty и Egger, МДФ в плёнке и эмали, AGT, Soft
+          touch, столешницы из искусственного камня, фурнитура Blum и Hettich
+        </p>
+      </section>
+    </>
+  );
+}
+
+const REVIEWS = [
+  {
+    text: "Огромное спасибо за угловой кухонный гарнитур! Всё объяснили, рассказали, отнеслись с пониманием, доставили вовремя. Сравнивал с другими магазинами — здесь цены на порядок меньше",
+    author: "Алексей Жариков, учитель истории",
+  },
+  {
+    text: "Заказали шкаф-купе в прихожую, отлично вписался по размерам. Хотели просто качественную недорогую мебель под заказ. Очень удобен в использовании!",
+    author: "Наталья Фёдорова",
+  },
+  {
+    text: "Индивидуальный подход, бесплатный дизайн-проект — ни о чём не нужно думать. Получился отличный шкаф-купе в спальню",
+    author: "Алина Абдрафикова",
+  },
+];
+
+function Reviews() {
+  return (
+    <>
+      <SectionRule label="клиенты" />
+      <section id="otzyvy" className="mx-auto w-full max-w-[1280px] px-5 py-14 sm:px-8 sm:py-20">
+        <h2 className="text-[22px] leading-tight sm:text-[32px]">Отзывы</h2>
+        <div className="mt-8 grid gap-x-8 gap-y-10 sm:grid-cols-3">
+          {REVIEWS.map((r) => (
+            <figure key={r.author} className="text-blueprint">
+              <DimLine />
+              <blockquote className="mt-4 text-graphite text-sm leading-relaxed sm:text-[15px]">
+                «{r.text}»
+              </blockquote>
+              <figcaption className="mt-4 font-mono text-[12px] text-graphite sm:text-[13px]">
+                — {r.author}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
+const PHONE = "+7 961 010-30-34";
+
+function LeadForm() {
+  const [submitted, setSubmitted] = useState(false);
+
+  return (
+    <>
+      <SectionRule label="контакт" />
+      <section id="zayavka" className="mx-auto w-full max-w-[1280px] px-5 py-14 sm:px-8 sm:py-20">
+        <h2 className="text-[22px] leading-tight sm:text-[32px]">Форма заявки</h2>
+        <div className="mt-8 grid gap-10 sm:grid-cols-2 sm:gap-16">
+          {submitted ? (
+            <p className="font-mono text-[13px] text-graphite sm:text-base">
+              Спасибо, заявка принята
+            </p>
+          ) : (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setSubmitted(true);
+              }}
+              className="max-w-[44ch]"
+            >
+              <label className="block font-mono text-[11px] text-blueprint sm:text-[12px]">
+                Имя
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  className="mt-1 w-full border-b border-graphite bg-transparent py-2 text-graphite text-sm focus:outline-none sm:text-base"
+                />
+              </label>
+              <label className="mt-6 block font-mono text-[11px] text-blueprint sm:text-[12px]">
+                Телефон
+                <input
+                  type="tel"
+                  name="phone"
+                  required
+                  className="mt-1 w-full border-b border-graphite bg-transparent py-2 text-graphite text-sm focus:outline-none sm:text-base"
+                />
+              </label>
+              <label className="mt-6 flex items-start gap-3 font-mono text-[11px] leading-relaxed text-blueprint sm:text-[12px]">
+                <input
+                  type="checkbox"
+                  name="consent"
+                  required
+                  className="mt-0.5 shrink-0 accent-graphite"
+                />
+                <span>
+                  Согласен на обработку персональных данных согласно{" "}
+                  <a href="#politika" className="underline underline-offset-4 hover:text-graphite">
+                    политике конфиденциальности
+                  </a>
+                </span>
+              </label>
+              <button
+                type="submit"
+                className="mt-8 bg-tape px-5 py-3 text-center font-mono text-[13px] uppercase tracking-[0.06em] text-graphite transition-opacity hover:opacity-85"
+              >
+                Рассчитать стоимость
+              </button>
+            </form>
+          )}
+          <div className="flex flex-col justify-center">
+            <div className="text-blueprint">
+              <DimLine />
+            </div>
+            <p className="mt-4 text-sm leading-relaxed sm:text-base">
+              Или напишите в{" "}
+              <a href="https://t.me/+79610103034" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-blueprint">
+                Telegram
+              </a>
+              ,{" "}
+              <a href="https://wa.me/79610103034" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-blueprint">
+                WhatsApp
+              </a>{" "}
+              или{" "}
+              <a href="viber://chat?number=%2B79610103034" className="underline underline-offset-4 hover:text-blueprint">
+                Viber
+              </a>{" "}
+              на {PHONE}
+            </p>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
 function Footer() {
   const contacts = [
     { label: "Телефон", value: PHONE_LABEL, href: PHONE_HREF },
@@ -451,18 +656,10 @@ function Index() {
         <Hero />
         <Services />
         <Works />
-        <PlaceholderSection
-          id="cena"
-          title="Как считается цена и как идёт заказ"
-          rule="этапы"
-        />
-        <PlaceholderSection
-          id="materialy"
-          title="Из чего делаем — материалы и фурнитура"
-          rule="спецификация"
-        />
-        <PlaceholderSection id="otzyvy" title="Отзывы" rule="клиенты" />
-        <PlaceholderSection id="zayavka" title="Форма заявки" rule="контакт" />
+        <OrderSteps />
+        <Conditions />
+        <Reviews />
+        <LeadForm />
       </main>
       <Footer />
     </div>
