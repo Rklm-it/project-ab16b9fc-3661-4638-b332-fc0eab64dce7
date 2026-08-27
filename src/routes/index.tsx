@@ -526,7 +526,8 @@ function LeadForm() {
                   type="text"
                   name="name"
                   required
-                  className="mt-1 w-full border-b border-graphite bg-transparent py-2 text-graphite text-sm focus:outline-none sm:text-base"
+                  autoComplete="name"
+                  className="mt-1 w-full border-b border-graphite bg-transparent py-2 text-graphite text-sm focus:border-blueprint focus:outline-none focus-visible:ring-2 focus-visible:ring-blueprint sm:text-base"
                 />
               </label>
               <label className="mt-6 block font-mono text-[11px] text-blueprint sm:text-[12px]">
@@ -535,7 +536,9 @@ function LeadForm() {
                   type="tel"
                   name="phone"
                   required
-                  className="mt-1 w-full border-b border-graphite bg-transparent py-2 text-graphite text-sm focus:outline-none sm:text-base"
+                  autoComplete="tel"
+                  inputMode="tel"
+                  className="mt-1 w-full border-b border-graphite bg-transparent py-2 text-graphite text-sm focus:border-blueprint focus:outline-none focus-visible:ring-2 focus-visible:ring-blueprint sm:text-base"
                 />
               </label>
               <label className="mt-6 flex items-start gap-3 font-mono text-[11px] leading-relaxed text-blueprint sm:text-[12px]">
@@ -547,7 +550,12 @@ function LeadForm() {
                 />
                 <span>
                   Согласен на обработку персональных данных согласно{" "}
-                  <a href="#politika" className="underline underline-offset-4 hover:text-graphite">
+                  <a
+                    href="https://www.mebel-ryazane.ru/politika-konfidentsialnosti/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-4 hover:text-graphite"
+                  >
                     политике конфиденциальности
                   </a>
                 </span>
