@@ -2,9 +2,10 @@ import { cn } from "@/lib/utils";
 
 type DimLineProps = {
   /** Подпись у линии, например «2400 мм» */
-  label?: string;
-  className?: string;
-  /** Позиция подписи относительно линии */
+  label?: string | undefined;
+  className?: string | undefined;
+  labelPosition?: "above" | "below" | undefined;
+
   labelPosition?: "above" | "below";
 };
 
