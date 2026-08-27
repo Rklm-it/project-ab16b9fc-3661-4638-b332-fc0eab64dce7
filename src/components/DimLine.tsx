@@ -5,8 +5,6 @@ type DimLineProps = {
   label?: string | undefined;
   className?: string | undefined;
   labelPosition?: "above" | "below" | undefined;
-
-  labelPosition?: "above" | "below";
 };
 
 /**
