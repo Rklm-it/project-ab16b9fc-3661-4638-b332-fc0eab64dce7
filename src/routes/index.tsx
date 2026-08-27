@@ -125,26 +125,6 @@ function Hero() {
   );
 }
 
-function PlaceholderSection({
-  id,
-  title,
-  rule,
-}: {
-  id: string;
-  title: string;
-  rule: string;
-}) {
-  return (
-    <>
-      <SectionRule label={rule} />
-      <section id={id} className="mx-auto w-full max-w-[1280px] px-5 py-14 sm:px-8 sm:py-20">
-        <h2 className="text-[22px] leading-tight sm:text-[32px]">{title}</h2>
-        <p className="mt-3 font-mono text-[12px] text-blueprint">[раздел в работе]</p>
-      </section>
-    </>
-  );
-}
-
 type ServiceStripProps = {
   id: string;
   photo: string;
@@ -154,6 +134,11 @@ type ServiceStripProps = {
   placement?: string;
   price: string;
   dims: string;
+  /** Фотография справа, а не слева: три одинаковые полосы подряд читаются
+   *  как шаблон, а не как композиция. */
+  flip?: boolean;
+  /** Фотография во всю ширину, текст под ней в две колонки. */
+  wide?: boolean;
 };
 
 function ServiceStrip({
@@ -165,14 +150,43 @@ function ServiceStrip({
   placement,
   price,
   dims,
+  flip,
+  wide,
 }: ServiceStripProps) {
+  if (wide) {
+    return (
+      <section id={id} className="mx-auto w-full max-w-[1280px] px-5 py-10 sm:px-8 sm:py-14">
+        <img
+          src={photo}
+          alt={alt}
+          className="h-[260px] w-full object-cover sm:h-[420px]"
+        />
+        <div className="mt-8 grid gap-6 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:gap-10">
+          <h3 className="text-[22px] leading-tight sm:text-[28px]">{title}</h3>
+          <div>
+            <p className="text-sm leading-relaxed sm:text-base">{listing}</p>
+            {placement && (
+              <p className="mt-3 font-mono text-[12px] text-blueprint sm:text-[13px]">
+                {placement}
+              </p>
+            )}
+            <p className="mt-5 font-mono text-[13px] text-graphite">{price}</p>
+          </div>
+        </div>
+        <div className="mt-6 text-blueprint">
+          <DimLine label={dims} />
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id={id} className="mx-auto w-full max-w-[1280px] px-5 py-10 sm:px-8 sm:py-14">
       <div className="grid gap-6 sm:grid-cols-2 sm:gap-10">
         <img
           src={photo}
           alt={alt}
-          className="h-[240px] w-full object-cover sm:h-[380px]"
+          className={`h-[240px] w-full object-cover sm:h-[380px] ${flip ? "sm:order-2" : ""}`}
         />
         <div className="flex flex-col justify-center">
           <h3 className="text-[22px] leading-tight sm:text-[28px]">{title}</h3>
@@ -222,6 +236,7 @@ function Services() {
         id="uslugi-shkafy"
         photo="/images/shkaf-kupe-01.jpg"
         alt="Шкаф-купе по индивидуальным размерам"
+        flip
         title="Шкафы-купе"
         listing="встроенные и корпусные, с зеркалом, с фотопечатью, угловые, мансардные, под лестницу"
         placement="в прихожую, спальню, детскую, гостиную, коридор, ванную"
@@ -232,6 +247,7 @@ function Services() {
         id="uslugi-garderobnye"
         photo="/images/garderobnaya-01.jpg"
         alt="Гардеробная по индивидуальным размерам"
+        wide
         title="Гардеробные"
         listing="из кладовки, в спальне, в коридоре, П-образные, угловые, встроенные"
         price="[от ... ₽]"
@@ -324,7 +340,7 @@ function Works() {
 
   return (
     <>
-      <SectionRule label="галерея" />
+      <SectionRule label="12 работ" />
       <section className="mx-auto w-full max-w-[1280px] px-5 py-14 sm:px-8 sm:py-20">
         <h2 className="text-[22px] leading-tight sm:text-[32px]">Работы с размерами</h2>
         <p className="mt-3 max-w-[60ch] text-sm leading-relaxed text-blueprint sm:text-base">
@@ -387,7 +403,7 @@ const ORDER_STEPS = [
 function OrderSteps() {
   return (
     <>
-      <SectionRule label="этапы" />
+      <SectionRule label="4 шага" />
       <section id="cena" className="mx-auto w-full max-w-[1280px] px-5 py-14 sm:px-8 sm:py-20">
         <h2 className="text-[22px] leading-tight sm:text-[32px]">Как идёт заказ</h2>
         <div className="mt-8 max-w-[64ch]">
@@ -460,7 +476,7 @@ const REVIEWS = [
 function Reviews() {
   return (
     <>
-      <SectionRule label="клиенты" />
+      <SectionRule />
       <section id="otzyvy" className="mx-auto w-full max-w-[1280px] px-5 py-14 sm:px-8 sm:py-20">
         <h2 className="text-[22px] leading-tight sm:text-[32px]">Отзывы</h2>
         <div className="mt-8 grid gap-x-8 gap-y-10 sm:grid-cols-3">
@@ -488,7 +504,7 @@ function LeadForm() {
 
   return (
     <>
-      <SectionRule label="контакт" />
+      <SectionRule />
       <section id="zayavka" className="mx-auto w-full max-w-[1280px] px-5 py-14 sm:px-8 sm:py-20">
         <h2 className="text-[22px] leading-tight sm:text-[32px]">Форма заявки</h2>
         <div className="mt-8 grid gap-10 sm:grid-cols-2 sm:gap-16">
