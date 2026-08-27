@@ -656,18 +656,10 @@ function Index() {
         <Hero />
         <Services />
         <Works />
-        <PlaceholderSection
-          id="cena"
-          title="Как считается цена и как идёт заказ"
-          rule="этапы"
-        />
-        <PlaceholderSection
-          id="materialy"
-          title="Из чего делаем — материалы и фурнитура"
-          rule="спецификация"
-        />
-        <PlaceholderSection id="otzyvy" title="Отзывы" rule="клиенты" />
-        <PlaceholderSection id="zayavka" title="Форма заявки" rule="контакт" />
+        <OrderSteps />
+        <Conditions />
+        <Reviews />
+        <LeadForm />
       </main>
       <Footer />
     </div>
