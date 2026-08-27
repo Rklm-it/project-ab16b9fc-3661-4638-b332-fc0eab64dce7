@@ -340,7 +340,7 @@ function Index() {
       <Header />
       <main>
         <Hero />
-        <PlaceholderSection id="uslugi" title="Что делаем" rule="4 направления" />
+        <Services />
         <PlaceholderSection id="raboty" title="Наши работы с размерами" rule="галерея" />
         <PlaceholderSection
           id="cena"
