@@ -450,7 +450,7 @@ function Index() {
       <main>
         <Hero />
         <Services />
-        <PlaceholderSection id="raboty" title="Наши работы с размерами" rule="галерея" />
+        <Works />
         <PlaceholderSection
           id="cena"
           title="Как считается цена и как идёт заказ"
