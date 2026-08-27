@@ -144,6 +144,118 @@ function PlaceholderSection({
   );
 }
 
+type ServiceStripProps = {
+  id: string;
+  photo: string;
+  alt: string;
+  title: string;
+  listing: string;
+  placement?: string;
+  price: string;
+  dims: string;
+};
+
+function ServiceStrip({
+  id,
+  photo,
+  alt,
+  title,
+  listing,
+  placement,
+  price,
+  dims,
+}: ServiceStripProps) {
+  return (
+    <section id={id} className="mx-auto w-full max-w-[1280px] px-5 py-10 sm:px-8 sm:py-14">
+      <div className="grid gap-6 sm:grid-cols-2 sm:gap-10">
+        <img
+          src={photo}
+          alt={alt}
+          className="h-[240px] w-full object-cover sm:h-[380px]"
+        />
+        <div className="flex flex-col justify-center">
+          <h3 className="text-[22px] leading-tight sm:text-[28px]">{title}</h3>
+          <p className="mt-4 text-sm leading-relaxed sm:text-base">{listing}</p>
+          {placement && (
+            <p className="mt-3 font-mono text-[12px] text-blueprint sm:text-[13px]">
+              {placement}
+            </p>
+          )}
+          <p className="mt-5 font-mono text-[13px] text-graphite">{price}</p>
+        </div>
+      </div>
+      <div className="mt-6 text-blueprint">
+        <DimLine label={dims} />
+      </div>
+    </section>
+  );
+}
+
+function Services() {
+  const otherItems = [
+    "Прихожие",
+    "Гостиные",
+    "Детская мебель",
+    "Мебель для ванной",
+    "Столешницы из искусственного камня",
+    "Межкомнатные перегородки",
+    "Двери-купе",
+    "Торговая мебель",
+    "Каретная стяжка",
+  ];
+
+  return (
+    <>
+      <SectionRule label="4 направления" />
+      <ServiceStrip
+        id="uslugi"
+        photo="/images/kuhnya-pryamaya-01.jpg"
+        alt="Кухня на заказ по индивидуальному проекту"
+        title="Кухни на заказ"
+        listing="по индивидуальному проекту, любой формы: угловые, прямые, П-образные, с островом, с барной стойкой, без верхних шкафов"
+        placement="в частный дом, в хрущёвку, на балкон, кухня-гостиная"
+        price="[от ... ₽ за погонный метр]"
+        dims="от 1800 до 4100 мм"
+      />
+      <ServiceStrip
+        id="uslugi-shkafy"
+        photo="/images/shkaf-kupe-01.jpg"
+        alt="Шкаф-купе по индивидуальным размерам"
+        title="Шкафы-купе"
+        listing="встроенные и корпусные, с зеркалом, с фотопечатью, угловые, мансардные, под лестницу"
+        placement="в прихожую, спальню, детскую, гостиную, коридор, ванную"
+        price="[от ... ₽]"
+        dims="от 600 до 3400 мм"
+      />
+      <ServiceStrip
+        id="uslugi-garderobnye"
+        photo="/images/garderobnaya-01.jpg"
+        alt="Гардеробная по индивидуальным размерам"
+        title="Гардеробные"
+        listing="из кладовки, в спальне, в коридоре, П-образные, угловые, встроенные"
+        price="[от ... ₽]"
+        dims="от 1200 мм"
+      />
+      <section className="mx-auto w-full max-w-[1280px] px-5 pb-14 sm:px-8 sm:pb-20">
+        <h3 className="mt-10 text-[22px] leading-tight sm:text-[28px]">
+          Другая корпусная мебель
+        </h3>
+        <ul className="mt-6 grid grid-cols-1 gap-x-10 sm:grid-cols-2">
+          {otherItems.map((item) => (
+            <li
+              key={item}
+              className="flex items-baseline gap-3 border-t border-edge py-3 text-sm sm:text-base"
+            >
+              <span className="font-mono text-[11px] text-blueprint">—</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </section>
+    </>
+  );
+}
+
 function Footer() {
   const contacts = [
     { label: "Телефон", value: PHONE_LABEL, href: PHONE_HREF },
