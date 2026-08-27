@@ -29,7 +29,7 @@ export const Route = createFileRoute("/")({
 const PHONE_HREF = "tel:+79610103034";
 const PHONE_LABEL = "+7 961 010-30-34";
 
-function CalcButton({ className = "" }: { className?: string }) {
+function CalcButton({ className = "inline-flex" }: { className?: string }) {
   return (
     <a
       href="#zayavka"
