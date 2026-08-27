@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { DimLine, SectionRule } from "@/components/DimLine";
 
@@ -256,6 +257,114 @@ function Services() {
   );
 }
 
+type Work = {
+  file: string;
+  alt: string;
+  category: string;
+  dimLabel: string;
+  size: string;
+  material: string;
+  price: string;
+};
+
+const WORKS: Work[] = [
+  { file: "/images/rabota-01.jpg", alt: "Кухня на заказ по индивидуальным размерам", category: "Кухни", dimLabel: "3200 мм", size: "3200 × 2400 мм", material: "ЛДСП Egger, 14 кв. м", price: "по расчёту" },
+  { file: "/images/rabota-02.jpg", alt: "Кухня на заказ по индивидуальным размерам", category: "Кухни", dimLabel: "2400 мм", size: "2400 × 2200 мм", material: "ЛДСП Egger, 11 кв. м", price: "[... ₽]" },
+  { file: "/images/rabota-03.jpg", alt: "Кухня на заказ по индивидуальным размерам", category: "Кухни", dimLabel: "2800 мм", size: "2800 × 2100 мм", material: "ЛДСП Kronospan, 9 кв. м", price: "по расчёту" },
+  { file: "/images/rabota-04.jpg", alt: "Кухня на заказ по индивидуальным размерам", category: "Кухни", dimLabel: "3600 мм", size: "3600 × 2400 мм", material: "ЛДСП Egger, 16 кв. м", price: "[... ₽]" },
+  { file: "/images/rabota-05.jpg", alt: "Шкаф-купе по индивидуальным размерам", category: "Шкафы-купе", dimLabel: "2600 мм", size: "2600 × 600 мм", material: "ЛДСП, зеркало, 5 кв. м", price: "[... ₽]" },
+  { file: "/images/rabota-06.jpg", alt: "Шкаф-купе по индивидуальным размерам", category: "Шкафы-купе", dimLabel: "3000 мм", size: "3000 × 600 мм", material: "ЛДСП Egger, фотопечать, 6 кв. м", price: "по расчёту" },
+  { file: "/images/rabota-07.jpg", alt: "Шкаф-купе по индивидуальным размерам", category: "Шкафы-купе", dimLabel: "1800 мм", size: "1800 × 600 мм", material: "ЛДСП, зеркало, 4 кв. м", price: "[... ₽]" },
+  { file: "/images/rabota-08.jpg", alt: "Гардеробная по индивидуальным размерам", category: "Гардеробные", dimLabel: "2400 мм", size: "2400 × 1400 мм", material: "ЛДСП Egger, 8 кв. м", price: "по расчёту" },
+  { file: "/images/rabota-09.jpg", alt: "Гардеробная по индивидуальным размерам", category: "Гардеробные", dimLabel: "2000 мм", size: "2000 × 1200 мм", material: "ЛДСП, сетки, 6 кв. м", price: "[... ₽]" },
+  { file: "/images/rabota-10.jpg", alt: "Прихожая по индивидуальным размерам", category: "Прихожие", dimLabel: "1600 мм", size: "1600 × 400 мм", material: "ЛДСП Egger, 3 кв. м", price: "[... ₽]" },
+  { file: "/images/rabota-11.jpg", alt: "Детская мебель по индивидуальным размерам", category: "Детская", dimLabel: "2200 мм", size: "2200 × 600 мм", material: "ЛДСП Egger, 7 кв. м", price: "по расчёту" },
+  { file: "/images/rabota-12.jpg", alt: "Мебель для ванной по индивидуальным размерам", category: "Ванная", dimLabel: "1400 мм", size: "1400 × 500 мм", material: "ЛДСП влагостойкая, 4 кв. м", price: "[... ₽]" },
+];
+
+const WORK_FILTERS = [
+  "Все",
+  "Кухни",
+  "Шкафы-купе",
+  "Гардеробные",
+  "Прихожие",
+  "Детская",
+  "Ванная",
+] as const;
+
+function WorkCard({ work }: { work: Work }) {
+  return (
+    <article className="group">
+      <div className="relative overflow-hidden">
+        <img
+          src={work.file}
+          alt={work.alt}
+          className="aspect-[4/3] w-full bg-edge object-cover"
+        />
+        <div className="absolute inset-0 bg-graphite/0 transition-colors duration-200 group-hover:bg-graphite/25" />
+      </div>
+      <div className="mt-3 text-blueprint">
+        <DimLine label={work.dimLabel} />
+      </div>
+      <p className="mt-2 font-mono text-[12px] text-graphite sm:text-[13px]">
+        Размер: {work.size}
+      </p>
+      <p className="font-mono text-[12px] text-blueprint sm:text-[13px]">
+        Материал: {work.material}
+      </p>
+      <p className="mt-2 font-mono text-[13px] text-graphite">{work.price}</p>
+    </article>
+  );
+}
+
+function Works() {
+  const [active, setActive] = useState<string>("Все");
+  const visible =
+    active === "Все" ? WORKS : WORKS.filter((w) => w.category === active);
+
+  return (
+    <>
+      <SectionRule label="галерея" />
+      <section className="mx-auto w-full max-w-[1280px] px-5 py-14 sm:px-8 sm:py-20">
+        <h2 className="text-[22px] leading-tight sm:text-[32px]">Работы с размерами</h2>
+        <p className="mt-3 max-w-[60ch] text-sm leading-relaxed text-blueprint sm:text-base">
+          Каждая вещь сделана по размерам конкретной квартиры — поэтому рядом с
+          фото стоит размер.
+        </p>
+
+        <div className="mt-8 -mx-5 overflow-x-auto px-5 sm:mx-0 sm:px-0">
+          <div className="flex w-max gap-2 whitespace-nowrap sm:w-full sm:flex-wrap">
+            {WORK_FILTERS.map((f) => {
+              const isActive = f === active;
+              return (
+                <button
+                  key={f}
+                  type="button"
+                  onClick={() => setActive(f)}
+                  className={
+                    "border px-4 py-2 font-mono text-[12px] uppercase tracking-[0.04em] transition-colors sm:text-[13px] " +
+                    (isActive
+                      ? "border-graphite bg-graphite text-paper"
+                      : "border-edge text-graphite hover:border-graphite")
+                  }
+                >
+                  {f}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          {visible.map((work) => (
+            <WorkCard key={work.file} work={work} />
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
 function Footer() {
   const contacts = [
     { label: "Телефон", value: PHONE_LABEL, href: PHONE_HREF },
@@ -341,7 +450,7 @@ function Index() {
       <main>
         <Hero />
         <Services />
-        <PlaceholderSection id="raboty" title="Наши работы с размерами" rule="галерея" />
+        <Works />
         <PlaceholderSection
           id="cena"
           title="Как считается цена и как идёт заказ"
