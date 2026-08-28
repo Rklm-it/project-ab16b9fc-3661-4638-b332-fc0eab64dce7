@@ -23,6 +23,14 @@ export const Route = createFileRoute("/")({
         content:
           "Мебель по размерам заказчика, а не из каталога. Замер, проект и изготовление за 2–5 недель. Заказы от 10 000 ₽.",
       },
+      // Без картинки ссылка приезжает в мессенджер пустой строкой, а первым
+      // её открывает как раз клиент, которому её и присылают. Адрес
+      // абсолютный: относительный путь мессенджеры не разворачивают. На
+      // домене прототипа — при переезде поменять на домен клиента.
+      { property: "og:image", content: "https://mebel-review.nexus-flow.ru/og.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:image", content: "https://mebel-review.nexus-flow.ru/og.png" },
     ],
   }),
   component: Index,
