@@ -86,19 +86,23 @@ function Hero() {
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute top-[12%] left-[8%] w-[52%] text-paper sm:w-[38%]">
             <span className="dim-line" aria-hidden="true" />
-            <div className="mt-1.5 font-mono text-[11px] sm:text-xs">3200 мм</div>
+            <div className="mt-1.5 inline-block bg-graphite/75 px-1.5 py-0.5 font-mono text-[11px] sm:text-xs">
+              3200 мм
+            </div>
           </div>
 
           <div className="absolute top-[16%] right-[8%] h-[34%] text-paper">
             <span className="dim-line-v h-full" aria-hidden="true" />
-            <div className="absolute top-1/2 right-3 -translate-y-1/2 font-mono text-[11px] whitespace-nowrap sm:text-xs">
+            <div className="absolute top-1/2 right-3 -translate-y-1/2 bg-graphite/75 px-1.5 py-0.5 font-mono text-[11px] whitespace-nowrap sm:text-xs">
               2400 мм
             </div>
           </div>
 
           <div className="absolute top-[58%] left-[8%] hidden w-[26%] text-paper sm:block">
             <span className="dim-line" aria-hidden="true" />
-            <div className="mt-1.5 font-mono text-[11px] sm:text-xs">600 мм</div>
+            <div className="mt-1.5 inline-block bg-graphite/75 px-1.5 py-0.5 font-mono text-[11px] sm:text-xs">
+              600 мм
+            </div>
           </div>
         </div>
 
@@ -223,6 +227,9 @@ function Services() {
   return (
     <>
       <SectionRule label="4 направления" />
+      <div className="mx-auto w-full max-w-[1280px] px-5 pt-10 sm:px-8 sm:pt-14">
+        <h2 className="text-[22px] leading-tight sm:text-[32px]">Что делаем</h2>
+      </div>
       <ServiceStrip
         id="uslugi"
         photo="/images/kuhnya-pryamaya-01.jpg"
