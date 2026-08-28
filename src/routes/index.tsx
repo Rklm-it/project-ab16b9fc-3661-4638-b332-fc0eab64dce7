@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { DimLine, SectionRule } from "@/components/DimLine";
+import { Foto } from "@/components/Foto";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -75,7 +76,7 @@ function Hero() {
   return (
     <section className="relative w-full">
       <div className="relative h-[78vh] min-h-[480px] w-full overflow-hidden bg-edge sm:h-[80vh]">
-        <img
+        <Foto
           src="/images/kuhnya-uglovaya-01.jpg"
           alt="Готовая угловая кухня, изготовленная по индивидуальным размерам"
           className="h-full w-full object-cover"
@@ -156,7 +157,7 @@ function ServiceStrip({
   if (wide) {
     return (
       <section id={id} className="mx-auto w-full max-w-[1280px] px-5 py-10 sm:px-8 sm:py-14">
-        <img
+        <Foto
           src={photo}
           alt={alt}
           className="h-[260px] w-full object-cover sm:h-[420px]"
@@ -183,7 +184,7 @@ function ServiceStrip({
   return (
     <section id={id} className="mx-auto w-full max-w-[1280px] px-5 py-10 sm:px-8 sm:py-14">
       <div className="grid gap-6 sm:grid-cols-2 sm:gap-10">
-        <img
+        <Foto
           src={photo}
           alt={alt}
           className={`h-[240px] w-full object-cover sm:h-[380px] ${flip ? "sm:order-2" : ""}`}
@@ -312,7 +313,7 @@ function WorkCard({ work }: { work: Work }) {
   return (
     <article className="group">
       <div className="relative overflow-hidden">
-        <img
+        <Foto
           src={work.file}
           alt={work.alt}
           className="aspect-[4/3] w-full bg-edge object-cover"
