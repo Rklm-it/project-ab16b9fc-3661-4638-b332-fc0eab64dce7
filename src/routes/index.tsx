@@ -106,7 +106,9 @@ function Hero() {
             </div>
           </div>
 
-          <div className="absolute top-[58%] left-[8%] hidden w-[26%] text-paper sm:block">
+          {/* 38%, а не 58%: на 58% метка попадала за плашку заголовка и
+              налезала на H1 между строк — грязь на самом видном месте. */}
+          <div className="absolute top-[38%] left-[8%] hidden w-[26%] text-paper sm:block">
             <span className="dim-line" aria-hidden="true" />
             <div className="mt-1.5 inline-block bg-graphite/75 px-1.5 py-0.5 font-mono text-[11px] sm:text-xs">
               600 мм
